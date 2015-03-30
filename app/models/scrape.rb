@@ -10,7 +10,6 @@ class Scrape
   def call 
     restaurants = venues_hash.collect{|venue| venue}
     restaurants.each do |restaurant|
-      binding.pry
       # make a new restaurant if the venue id is not in the DB
       if !Restaurant.find_by(:foursquare_id => restaurant["id"])
         @restaurant = Restaurant.new
@@ -20,13 +19,14 @@ class Scrape
         @restaurant.zipcode = restaurant["location"]["postalCode"] if restaurant["location"] 
         @restaurant.city = restaurant["location"]["city"] if restaurant["location"]
         @restaurant.phone_number = restaurant["contact"]["phone"] if restaurant["contact"]
-        @restaurant.foursquare_url = restaurant["url"] || restaurant["stats"]["menu"]["url"] 
-        @cuisine = Cuisine.find_or_create_by(:name => restaurant["categories"]["shortName"])
+        # something wrong in line 23:
+        # @restaurant.foursquare_url = restaurant["url"] || restaurant["stats"]["menu"]["url"]
+        @cuisine = Cuisine.find_or_create_by(:name => restaurant["categories"][0]["shortName"])
         @restaurant.cuisines << @cuisine
         @restaurant.save
       else
         @restaurant = Restaurant.find_by(:foursquare_id => restaurant["id"])
-        @cuisine = Cuisine.find_or_create_by(:name => restaurant["categories"]["shortName"])
+        @cuisine = Cuisine.find_or_create_by(:name => restaurant["categories"][0]["shortName"])
         if !@restaurant.cuisine_ids.include?(@cuisine.id)
           @restaurant.cuisines << @cuisine
         end

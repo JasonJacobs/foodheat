@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330154646) do
+ActiveRecord::Schema.define(version: 20150330192442) do
 
   create_table "cuisines", force: :cascade do |t|
     t.string   "name"
@@ -44,12 +44,12 @@ ActiveRecord::Schema.define(version: 20150330154646) do
     t.string   "foursquare_id"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "zipcode"
-    t.string   "city"
-    t.string   "phone_number"
-    t.string   "foursquare_url"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "zipcode",        default: ""
+    t.string   "city",           default: ""
+    t.string   "phone_number",   default: ""
+    t.string   "foursquare_url", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
 end
