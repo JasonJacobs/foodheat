@@ -13,6 +13,7 @@ class Scrape
       # make a new restaurant if the venue id is not in the DB
       if !Restaurant.find_by(:foursquare_id => restaurant["id"])
         @restaurant = Restaurant.new
+        @restaurant.foursquare_id = restaurant["id"]
         @restaurant.name = restaurant["name"]
         @restaurant.latitude = restaurant["location"]["lat"]
         @restaurant.longitude = restaurant["location"]["lng"]
@@ -20,7 +21,7 @@ class Scrape
         @restaurant.city = restaurant["location"]["city"] if restaurant["location"]
         @restaurant.phone_number = restaurant["contact"]["phone"] if restaurant["contact"]
         # something wrong in line 23:
-        # @restaurant.foursquare_url = restaurant["url"] || restaurant["stats"]["menu"]["url"]
+        @restaurant.foursquare_url = to_slug(@restaurant.name)
         @cuisine = Cuisine.find_or_create_by(:name => restaurant["categories"][0]["shortName"])
         @restaurant.cuisines << @cuisine
         @restaurant.save
@@ -39,11 +40,12 @@ class Scrape
     JSON.parse(open("https://api.foursquare.com/v2/venues/search?client_id=#{ENV["client_id"]}&client_secret=#{ENV["client_secret"]}&v=20130815&near=#{location}&limit=50&query=#{query}").read)["response"]["venues"]
   end
 
-  # private
+  private
 
-  #   def restaurant_params
-      
-  #   end
+  def to_slug(name)
+    slug = name.downcase.gsub(" ", "-").gsub("&", "-").gsub("---", "--")
+    "https://foursquare.com/v/#{slug}/#{@restaurant.foursquare_id}"
+  end
 
 end
 
