@@ -20,7 +20,6 @@ class Scrape
         @restaurant.zipcode = restaurant["location"]["postalCode"] if restaurant["location"] 
         @restaurant.city = restaurant["location"]["city"] if restaurant["location"]
         @restaurant.phone_number = restaurant["contact"]["phone"] if restaurant["contact"]
-        # something wrong in line 23:
         @restaurant.foursquare_url = to_slug(@restaurant.name)
         @cuisine = Cuisine.find_or_create_by(:name => restaurant["categories"][0]["shortName"])
         @restaurant.cuisines << @cuisine
@@ -48,10 +47,3 @@ class Scrape
   end
 
 end
-
-
-
-# define variables that know the location of an attribute within the results hash
-
-# define find or create logic
-
