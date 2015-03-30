@@ -1,1 +1,1 @@
-
+SELECT COUNT(*), cuisines.name FROM restaurants JOIN restaurant_cuisines on restaurants.id = restaurant_cuisines.restaurant_id JOIN cuisines on cuisines.id = restaurant_cuisines.cuisine_id WHERE city = "Brooklyn" GROUP BY cuisines.name ORDER BY COUNT(*)DESC
