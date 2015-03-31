@@ -45,6 +45,8 @@ class Search
       categories = ["Turkish", "Lebanese", "Falafel"]
     when "Fast Food"
       categories = ["Fast Food", "Fried Chicken"]
+    when "Kosher"
+      categories = ["Kosher"]
     end
 
     @results = []
