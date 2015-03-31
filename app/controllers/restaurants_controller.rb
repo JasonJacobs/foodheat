@@ -6,8 +6,12 @@ class RestaurantsController < ApplicationController
 
   def search
     @search = Search.new(params[:cuisine])
-    coordinates = @search.get_coordinates(@search.search_for_cuisine)
-    binding.pry
+    @coordinates = @search.get_coordinates(@search.search_for_cuisine)
+    # new google.maps.LatLng(37.782551, -122.445368),
+    
+    respond_to do |f|
+      f.js
+    end
   end
 
 end

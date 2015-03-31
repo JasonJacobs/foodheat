@@ -2,7 +2,9 @@
 <div class="cuisine-buttons">
   <ul>
   <% @cuisines.each do |cuisine| %>
-    <li><%= button_to cuisine, search_path, params: {:cuisine => cuisine} %></li>
+    <li><%= button_to cuisine, search_path, params: {:cuisine => cuisine}, :remote => true %></li>
     <% end %>
   </ul>
 </div>
+
+<div id="map-canvas"></div>
