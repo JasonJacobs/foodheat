@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  resources :cuisines
+  # resources :cuisines
 
-  resources :restaurants
+  root 'restaurants#index'
+  post 'restaurants' => 'restaurants#search', as: :search
+  resources :restaurants, except: :create
+  
 
-  resources :neighborhoods
+  # resources :neighborhoods
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
