@@ -24,7 +24,7 @@ BRONX_ZIPS = ["10451", "10452", "10453", "10454", "10455", "10456", "10457", "10
 #     Scrape.new(zip, cuisine).call
 #   end
 # end
-cuisine_array = ["Japanese", "Chinese", "Mexican", "Coffee", "Bakery", "BBQ", "Pizza", "Caribbean", "Italian", "Thai", "Indian", "French", "Southern", "Food Truck", "Greek", "Middle Eastern", "Fast Food", "Kosher", "Vegetarian", "Vegan"]
+cuisine_array = ["Japanese", "Chinese", "Mexican", "Coffee", "Bakery", "BBQ", "Pizza", "Caribbean", "Italian", "Thai", "Indian", "French", "Southern", "Food Truck", "Greek", "Middle Eastern", "Fast Food", "Kosher", "Vegetarian", "Vegan", "Russian", "Polish"]
 
 cuisine_array.each do |cuisine_type|
     Restaurant.where("name LIKE ?", "%#{cuisine_type}%").each do |restaurant|     
