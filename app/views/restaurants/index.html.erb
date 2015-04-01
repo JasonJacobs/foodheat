@@ -1,9 +1,9 @@
-<h2>THE TITLE!</h2>
+<h1>FoodHeatNyc</h2>
 
 <div class="cuisine-buttons">
-  <ul>
+  <ul class="row">
   <% @cuisines.each do |cuisine| %>
-    <li><%= button_to cuisine, search_path, params: {:cuisine => cuisine}, :remote => true %></li>
+    <li><%= button_to cuisine, search_path, params: {:cuisine => cuisine}, :remote => true, :class => "btn btn-default btn-xs"%></li>
     <% end %>
   </ul>
 </div>
