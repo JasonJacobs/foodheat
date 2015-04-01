@@ -5,12 +5,10 @@ var heatmapData = [
   <% end %>
   ];
 
-function initialize() {
-  // $("span.pins-button").on("click","button", togglePins);
-  $('span#show-pins-btn').removeClass('hidden');
-  $('span#show-pins-btn').on("click", "button", changeShowClass)
-  $('span#hide-pins-btn').on("click", "button", changeHideClass)
 
+function initialize() {
+  var cuisine = "<%= @search.cuisine%>";
+  restaurantCount(cuisine);
   var mapOptions = {
     zoom: 11,
     center: new google.maps.LatLng(40.7, -73.9),
@@ -34,7 +32,12 @@ function initialize() {
     position: pinLocation,
     title:"Hello World!",
     animation: google.maps.Animation.DROP
-  });  
+  });
+}
+
+function restaurantCount(cuisine){
+  var count = "<%= @coordinates.count %>";
+  $("span.count").text(cuisine + ": " + count)
 }
 
 function toggleHeatmap() {
@@ -69,6 +72,10 @@ function changeRadius() {
 
 function changeOpacity() {
   heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
+}
+
+function dropPin(){
+  marker.setMap(map);
 }
 
 function changeShowClass(){
