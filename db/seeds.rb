@@ -13,16 +13,18 @@
 #   end
 # end
 
-cuisine_array = ["Japanese", "Chinese", "Mexican", "Coffee Shops", "Bakery", "BBQ", "Pizza", "Caribbean", "Italian", "Thai", "Indian", "French", "Southern", "Food Truck", "Greek", "Middle Eastern", "Fast Food", "Kosher", "Vegetarian", "Vegan"]
+
+# QUEENS_ZIPS.each do |zip|
+#   cuisine_list.each do |cuisine|
+#     Scrape.new(zip, cuisine).call
+#   end
+# end
+cuisine_array = ["Japanese", "Chinese", "Mexican", "Coffee", "Bakery", "BBQ", "Pizza", "Caribbean", "Italian", "Thai", "Indian", "French", "Southern", "Food Truck", "Greek", "Middle Eastern", "Fast Food", "Kosher", "Vegetarian", "Vegan"]
 
 cuisine_array.each do |cuisine_type|
-  food_restaurants = Cuisine.find_by(name: cuisine_type).restaurants
-
-  food_restaurants.each do |restaurant|
-    Restaurant.where("name LIKE ?", "%#{cuisine_type}%").each do |restaurant|
-      @cuisine = Cuisine.find_or_create_by(name: cuisine_type)
-      restaurant.cuisines << @cuisine if !restaurant.cuisines.include?(@cuisine)
-      restaurant.save
-    end
+    Restaurant.where("name LIKE ?", "%#{cuisine_type}%").each do |restaurant|      
+    @cuisine = Cuisine.find_or_create_by(name: cuisine_type)
+    restaurant.cuisines << @cuisine if !restaurant.cuisines.include?(@cuisine)
+    restaurant.save
   end
 end
