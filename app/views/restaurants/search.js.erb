@@ -1,4 +1,3 @@
-
 var map, pointArray, heatmap;
 var heatmapData = [
   <% @coordinates.each do |venue| %>
@@ -7,6 +6,11 @@ var heatmapData = [
   ];
 
 function initialize() {
+  // $("span.pins-button").on("click","button", togglePins);
+  $('span#show-pins-btn').removeClass('hidden');
+  $('span#show-pins-btn').on("click", "button", changeShowClass)
+  $('span#hide-pins-btn').on("click", "button", changeHideClass)
+
   var mapOptions = {
     zoom: 11,
     center: new google.maps.LatLng(40.7, -73.9),
@@ -30,9 +34,7 @@ function initialize() {
     position: pinLocation,
     title:"Hello World!",
     animation: google.maps.Animation.DROP
-  });
-  
-  
+  });  
 }
 
 function toggleHeatmap() {
@@ -69,8 +71,24 @@ function changeOpacity() {
   heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
 }
 
-function dropPin(){
+function changeShowClass(){
+  dropPins();
+  $('span#show-pins-btn').addClass("hidden")
+  $('span#hide-pins-btn').removeClass('hidden')
+} 
+
+function changeHideClass(){
+  hidePins();
+  $('span#hide-pins-btn').addClass('hidden')
+  $('span#show-pins-btn').removeClass('hidden')
+} 
+
+function dropPins(){
   marker.setMap(map);
+}
+
+function hidePins(){
+  marker.setMap(null);
 }
 
 initialize();
