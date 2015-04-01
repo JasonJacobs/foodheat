@@ -17,17 +17,19 @@ function initialize() {
       mapOptions);
 
   var pointArray = new google.maps.MVCArray(heatmapData);
+  
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: pointArray
     
   });
 
   heatmap.setMap(map);
-  
-  var center = new google.maps.LatLng(40.7, -73.9)
+
+  var pinLocation = new google.maps.LatLng(40.7, -73.9)
   marker = new google.maps.Marker({
-    position: center,
-    title:"Hello World!"
+    position: pinLocation,
+    title:"Hello World!",
+    animation: google.maps.Animation.DROP
   });
   
   
