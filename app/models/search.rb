@@ -10,9 +10,9 @@ class Search
 
     case @cuisine
     when "Japanese"
-      categories = ["Japanese", "Sushi", "Ramen", "Udon"]
+      categories = ["Japanese", "Sushi", "Ramen / Noodles", "Udon", "Sake Bar"]
     when "Chinese"
-      categories = ["Chinese", "Cantonese", "Dumplings"] 
+      categories = ["Chinese", "Cantonese", "Dumplings", "Shanghai", "Szechuan"] 
     when "Mexican"
       categories = ["Mexican", "Tacos", "Taqueria"]
     when "Coffee Shops"
@@ -21,6 +21,8 @@ class Search
       categories = ["Bakery", "Bagels"]
     when "BBQ"
       categories = ["BBQ"]
+    when "Fried Chicken"
+      categories = ["Fried Chicken", "Wings"]
     when "Pizza"
       categories = ["Pizza"]
     when "Caribbean"
@@ -36,17 +38,21 @@ class Search
     when "American / New American"
       categories = ["Diner", "American", "New American"]
     when "Southern"
-      categories = ["Southern", "Soul Food"]
+      categories = ["Southern", "Soul Food", "Southern / Soul"]
     when "Food  Truck"
       categories = ["Food Truck"]
     when "Greek"
       categories = ["Greek"]
     when "Middle Eastern"
-      categories = ["Turkish", "Lebanese", "Falafel"]
+      categories = ["Turkish", "Lebanese", "Falafel", "Egyptian"]
     when "Fast Food"
       categories = ["Fast Food", "Fried Chicken"]
     when "Kosher"
-      categories = ["Kosher"]
+      categories = ["Kosher", "Kosher1"]
+    when "Russian"
+      categories = ["Russian", "Ukrainian"] 
+    when "Vegetarian"
+      categories = ["Vegetarian / Vegan"]
     end
 
     @results = []
