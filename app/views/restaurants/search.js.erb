@@ -26,15 +26,17 @@ function initialize() {
     data: pointArray
     
   });
-
+  
   heatmap.setMap(map);
-
-  var pinLocation = new google.maps.LatLng(40.7, -73.9)
+  allMarkers = []
+  <% @restaurants.each do |restaurant| %>
   marker = new google.maps.Marker({
-    position: pinLocation,
-    title:"Hello World!",
+    position: new google.maps.LatLng(<%=restaurant.latitude%>, <%= restaurant.longitude -%>),
+    title: "<%= restaurant.name %>",
     animation: google.maps.Animation.DROP
   });
+  allMarkers.push(marker)
+  <% end %>
 }
 
 function restaurantCount(cuisine){
@@ -93,11 +95,19 @@ function changeHideClass(){
 } 
 
 function dropPins(){
-  marker.setMap(map);
+  
+  allMarkers.forEach(function(venue){
+    venue.setMap(map);
+  })
+  
+  // alert("drop hits")
 }
 
 function hidePins(){
-  marker.setMap(null);
+   allMarkers.forEach(function(venue){
+    venue.setMap(null);
+  })
+
 }
 
 initialize();
