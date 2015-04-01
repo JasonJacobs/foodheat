@@ -7,6 +7,7 @@ var heatmapData = [
   ];
 
 function initialize() {
+  $("span.pins-button").on("click","button", togglePins);
   var mapOptions = {
     zoom: 11,
     center: new google.maps.LatLng(40.7, -73.9),
@@ -34,6 +35,8 @@ function initialize() {
   
   
 }
+
+
 
 function toggleHeatmap() {
   
@@ -68,9 +71,21 @@ function changeRadius() {
 function changeOpacity() {
   heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
 }
+function togglePins(){
+   
+   if ($('span.pins-button').text() ===  "Show Restaurants"){
+      dropPins();
+      
+      $('span.pins-button').children('button').text("Hide Restaurants")
+   } 
+}
 
-function dropPin(){
+function dropPins(){
   marker.setMap(map);
+}
+
+function hidePins(){
+  marker.setMap(null);
 }
 
 initialize();
