@@ -23,7 +23,14 @@ function initialize() {
   });
 
   heatmap.setMap(map);
-
+  
+  var center = new google.maps.LatLng(40.7, -73.9)
+  marker = new google.maps.Marker({
+    position: center,
+    title:"Hello World!"
+  });
+  
+  
 }
 
 function toggleHeatmap() {
@@ -60,5 +67,8 @@ function changeOpacity() {
   heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
 }
 
+function dropPin(){
+  marker.setMap(map);
+}
 
 initialize();
