@@ -6,4 +6,10 @@
     <li><%= button_to cuisine, search_path, params: {:cuisine => cuisine}, :remote => true, :class => "btn btn-default btn-xs"%></li>
     <% end %>
   </ul>
+  <ul class="row">
+      <button class="btn btn-primary btn-xs" onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button class="btn btn-primary btn-xs" onclick="changeGradient()">Change gradient</button>
+      <button class="btn btn-primary btn-xs" onclick="changeRadius()">Change radius</button>
+      <button class="btn btn-primary btn-xs"onclick="changeOpacity()">Change opacity</button>
+  </ul>
 </div>
