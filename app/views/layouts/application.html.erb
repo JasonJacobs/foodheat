@@ -8,7 +8,9 @@
   <%= analytics_init if Rails.env.production? %>
 </head>
 
-
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+  
+    <script>
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["map_key"] %>">
     </script>
@@ -18,26 +20,6 @@
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true_or_false">
     </script>
-    <style>
-      html, body, #map-canvas {
-        height: 95%;
-        margin: 10px;
-        padding: 10px
-      }
-      #panel {
-        position: absolute;
-        top: 5px;
-        left: 50%;
-        margin-left: -180px;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-      }
-      #map-canvas { 
-        height: 90%; margin: 0; padding: 0;
-      }
-    </style>
 
 
 <body>

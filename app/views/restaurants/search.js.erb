@@ -17,6 +17,7 @@ function initialize() {
       mapOptions);
 
   var pointArray = new google.maps.MVCArray(heatmapData);
+  
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: pointArray
     
@@ -24,6 +25,14 @@ function initialize() {
 
   heatmap.setMap(map);
 
+  var pinLocation = new google.maps.LatLng(40.7, -73.9)
+  marker = new google.maps.Marker({
+    position: pinLocation,
+    title:"Hello World!",
+    animation: google.maps.Animation.DROP
+  });
+  
+  
 }
 
 function toggleHeatmap() {
@@ -60,5 +69,8 @@ function changeOpacity() {
   heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
 }
 
+function dropPin(){
+  marker.setMap(map);
+}
 
 initialize();
