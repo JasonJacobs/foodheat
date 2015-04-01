@@ -36,8 +36,8 @@ class Scrape
 
   def venues_hash
 
-    JSON.parse(open("https://api.foursquare.com/v2/venues/search?client_id=#{ENV["client_id"]}&client_secret=#{ENV["client_secret"]}&v=20130815&near=#{location}&limit=50&query=#{query}").read)["response"]["venues"]
-  end
+      JSON.parse(open("https://api.foursquare.com/v2/venues/search?client_id=#{ENV["client_id"]}&client_secret=#{ENV["client_secret"]}&v=20130815&near=#{location}&limit=50&query=#{query}").read)["response"]["venues"]
+    end
 
   private
 
