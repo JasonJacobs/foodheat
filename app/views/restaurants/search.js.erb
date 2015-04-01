@@ -5,8 +5,10 @@ var heatmapData = [
   <% end %>
   ];
 
-
 function initialize() {
+  $('span#show-pins-btn').removeClass('hidden');
+  $('span#show-pins-btn').on("click", "button", changeShowClass)
+  $('span#hide-pins-btn').on("click", "button", changeHideClass)
   var cuisine = "<%= @search.cuisine%>";
   restaurantCount(cuisine);
   var mapOptions = {
