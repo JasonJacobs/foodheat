@@ -1,15 +1,21 @@
-<h1>FoodHeatNyc</h2>
+<div class="container" style="margin-top: -50px">
 
-<div class="cuisine-buttons">
-  <ul class="row">
-  <% @cuisines.each do |cuisine| %>
-    <li><%= button_to cuisine, search_path, params: {:cuisine => cuisine}, :remote => true, :class => "btn btn-default btn-xs"%></li>
-    <% end %>
-  </ul>
-  <ul class="row">
-      <button class="btn btn-primary btn-xs" onclick="toggleHeatmap()">Toggle Heatmap</button>
-      <button class="btn btn-primary btn-xs" onclick="changeGradient()">Change gradient</button>
-      <button class="btn btn-primary btn-xs" onclick="changeRadius()">Change radius</button>
-      <button class="btn btn-primary btn-xs"onclick="changeOpacity()">Change opacity</button>
-  </ul>
+  <h1>FoodHeatNyc</h2>
+  <div class="cuisine-buttons">
+    <ul class="row">
+    <% @cuisines.each do |cuisine| %>
+      <li><%= button_to cuisine, search_path, params: {:cuisine => cuisine}, :remote => true, :class => "btn btn-default btn-xs"%></li>
+      <% end %>
+    </ul>
+    <ul class="row">
+        <button class="btn btn-primary btn-xs" onclick="toggleHeatmap()">Toggle Heatmap</button>
+        <button class="btn btn-primary btn-xs" onclick="changeGradient()">Change gradient</button>
+        <button class="btn btn-primary btn-xs" onclick="changeRadius()">Change radius</button>
+        <button class="btn btn-primary btn-xs" onclick="changeOpacity()">Change opacity</button>
+        <span class="hidden" id="show-pins-btn"><button class="btn btn-primary btn-xs">Show Restaurants</button></span>
+        <span class="hidden" id="hide-pins-btn"><button class="btn btn-primary btn-xs">Hide Restaurants</button></span>
+
+    </ul>
+  </div>
 </div>
+<div id="map-canvas"></div>
