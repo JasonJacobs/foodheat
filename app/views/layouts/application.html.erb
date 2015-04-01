@@ -15,6 +15,9 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
 
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true_or_false">
+    </script>
     <style>
       html, body, #map-canvas {
         height: 95%;
@@ -41,7 +44,7 @@
   <div class="container" style="margin-top: -50px">
     <%= yield %>
   </div>
-
   <div id="map-canvas"></div>
+
 </body>
 </html>

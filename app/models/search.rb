@@ -48,7 +48,7 @@ class Search
     when "Fast Food"
       categories = ["Fast Food", "Fried Chicken"]
     when "Kosher"
-      categories = ["Kosher", "Kosher1"]
+      categories = ["Kosher", "Kosher1", "Jewish"]
     when "Russian"
       categories = ["Russian", "Ukrainian"] 
     when "Polish"
