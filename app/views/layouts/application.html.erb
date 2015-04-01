@@ -7,32 +7,19 @@
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
 </head>
-    <style type="text/css">
-      html, body, #map-canvas { height: 90%; margin: 0; padding: 0;}
-    </style>
+
+
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["map_key"] %>">
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
 
-
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: { lat: 40.7, lng: -73.9},
-          zoom: 11
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
     <style>
       html, body, #map-canvas {
         height: 100%;
-        margin: 0px;
-        padding: 0px
+        margin: 10px;
+        padding: 10px
       }
       #panel {
         position: absolute;
@@ -44,12 +31,17 @@
         padding: 5px;
         border: 1px solid #999;
       }
+      #map-canvas { 
+        height: 90%; margin: 0; padding: 0;
+      }
     </style>
 
 
 <body>
+  <div class="container">
+    <%= yield %>
+  </div>
 
-<%= yield %>
-
+  <div id="map-canvas"></div>
 </body>
 </html>
