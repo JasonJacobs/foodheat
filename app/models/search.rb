@@ -51,8 +51,10 @@ class Search
       categories = ["Kosher", "Kosher1"]
     when "Russian"
       categories = ["Russian", "Ukrainian"] 
-    when "Vegetarian"
-      categories = ["Vegetarian / Vegan"]
+    when "Polish"
+      categories = ["Polish"] 
+    when "Vegetarian / Vegan"
+      categories = ["Vegetarian / Vegan", "Vegetarian", "Vegan"]
     end
 
     @results = []

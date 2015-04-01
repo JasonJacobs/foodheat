@@ -22,7 +22,7 @@
 cuisine_array = ["Japanese", "Chinese", "Mexican", "Coffee", "Bakery", "BBQ", "Pizza", "Caribbean", "Italian", "Thai", "Indian", "French", "Southern", "Food Truck", "Greek", "Middle Eastern", "Fast Food", "Kosher", "Vegetarian", "Vegan"]
 
 cuisine_array.each do |cuisine_type|
-    Restaurant.where("name LIKE ?", "%#{cuisine_type}%").each do |restaurant|      
+    Restaurant.where("name LIKE ?", "%#{cuisine_type}%").each do |restaurant|     
     @cuisine = Cuisine.find_or_create_by(name: cuisine_type)
     restaurant.cuisines << @cuisine if !restaurant.cuisines.include?(@cuisine)
     restaurant.save
