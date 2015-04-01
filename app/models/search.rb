@@ -39,7 +39,7 @@ class Search
       categories = ["Diner", "American", "New American"]
     when "Southern"
       categories = ["Southern", "Soul Food", "Southern / Soul"]
-    when "Food  Truck"
+    when "Food Truck"
       categories = ["Food Truck"]
     when "Greek"
       categories = ["Greek"]
