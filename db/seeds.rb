@@ -15,8 +15,23 @@ QUEENS_ZIPS =["11421","11422","11423","11424","11425","11426","11427","11428","1
 
 cuisine_list = ["Afghan Restaurant", "African Restaurant", "American Restaurant", "Arepa Restaurant", "Argentinian Restaurant", "Asian Restaurant", "Australian Restaurant", "Austrian Restaurant", "BBQ Joint", "Bagel Shop", "Bakery", "Belgian Restaurant", "Bistro", "Brazilian Restaurant", "Breakfast Spot", "Bubble Tea Shop", "Buffet", "Burger Joint", "Burrito Place", "Cafeteria", "Cafe", "Cajun Restaurant", "Creole Restaurant", "Cambodian Restaurant", "Caribbean Restaurant", "Chinese Restaurant", "Coffee Shop", "Comfort Food Restaurant", "Creperie", "Cuban Restaurant", "Cupcake Shop", "Czech Restaurant", "Deli", "Bodega", "Dessert Shop", "Dim Sum Restaurant", "Diner", "Distillery", "Donut Shop", "Dumpling Restaurant", "Eastern European Restaurant", "English Restaurant", "Ethiopian Restaurant", "Falafel Restaurant", "Fast Food Restaurant", "Filipino Restaurant", "Fish & Chips Shop", "Fondue Restaurant", "Food Truck", "French Restaurant", "Fried Chicken Joint", "Gastropub", "German Restaurant", "Gluten-free Restaurant", "Greek Restaurant", "Halal Restaurant", "Hawaiian Restaurant", "Himalayan Restaurant", "Hot Dog Joint", "Hotpot Restaurant", "Hungarian Restaurant", "Ice Cream Shop", "Indian Restaurant", "Indonesian Restaurant", "Irish Pub", "Italian Restaurant", "Japanese Restaurant", "Jewish Restaurant", "Juice Bar", "Korean Restaurant", "Kosher Restaurant", "Latin American Restaurant", "Mac & Cheese Joint", "Malaysian Restaurant", "Mediterranean Restaurant", "Mexican Restaurant", "Middle Eastern Restaurant", "Modern European Restaurant", "Molecular Gastronomy Restaurant", "Mongolian Restaurant", "Moroccan Restaurant", "New American Restaurant", "Pakistani Restaurant", "Persian Restaurant", "Peruvian Restaurant", "Pie Shop", "Pizza Place", "Polish Restaurant", "Portuguese Restaurant", "Ramen", "Noodle House", "Restaurant", "Romanian Restaurant", "Russian Restaurant", "Salad Place", "Sandwich Place", "Scandinavian Restaurant", "Seafood Restaurant", "Snack Place", "Soup Place", "South American Restaurant", "Southern Restaurant", "Soul Food Restaurant", "Souvlaki Shop", "Spanish Restaurant", "Sri Lankan Restaurant", "Steakhouse", "Sushi Restaurant", "Swiss Restaurant", "Taco Place", "Tapas Restaurant", "Tea Room", "Thai Restaurant", "Tibetan Restaurant", "Turkish Restaurant", "Kebab Restaurant", "Ukrainian Restaurant", "Vegetarian Restaurant", "Vegan Restaurant", "Vietnamese Restaurant", "Winery", "Wings Joint", "Frozen Yogurt"]
 
-QUEENS_ZIPS.each do |zip|
-  cuisine_list.each do |cuisine|
-    Scrape.new(zip, cuisine).call
+# QUEENS_ZIPS.each do |zip|
+#   cuisine_list.each do |cuisine|
+#     Scrape.new(zip, cuisine).call
+#   end
+# end
+cuisine_array = ["Japanese", "Chinese", "Mexican", "Coffee", "Bakery", "BBQ", "Pizza", "Caribbean", "Italian", "Thai", "Indian", "French", "Southern", "Food Truck", "Greek", "Middle Eastern", "Fast Food", "Kosher", "Vegetarian", "Vegan"]
+
+cuisine_array.each do |cuisine_type|
+    Restaurant.where("name LIKE ?", "%#{cuisine_type}%").each do |restaurant|      
+    @cuisine = Cuisine.find_or_create_by(name: cuisine_type)
+    restaurant.cuisines << @cuisine if !restaurant.cuisines.include?(@cuisine)
+    restaurant.save
   end
 end
+
+
+
+
+
+
