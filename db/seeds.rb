@@ -75,7 +75,7 @@ facts = {
   "Italian" => [
     "New York City has the largest population of Italian Americans in the United States of America, many of whom inhabit ethnic enclaves in Brooklyn, the Bronx, Queens, and Staten Island.",
     "The largest wave of Italian immigration to the United States took place in the late 19th century and early 20th century.",
-    "Italian families first settled in Little Italy's neighborhoods, the first and most famous one being the one around Mulberry Street, in Manhattan."]
+    "Italian families first settled in Little Italy's neighborhoods, the first and most famous one being the one around Mulberry Street, in Manhattan."],
 
   "Japanese" => ["As of the 2000 Census about over half of the 37,279 people of Japanese ancestry in New York State lived in New York City."],
 
