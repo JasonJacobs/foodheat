@@ -15,7 +15,7 @@ class Search
       categories = ["Chinese", "Cantonese", "Dumplings", "Shanghai", "Szechuan"] 
     when "Mexican"
       categories = ["Mexican", "Tacos", "Taqueria"]
-    when "Coffee Shops"
+    when "Coffee"
       categories = ["Coffee", "Café"]
     # when "Bakery"
     #   categories = ["Bakery", "Bagels"]
