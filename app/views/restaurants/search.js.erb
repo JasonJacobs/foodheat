@@ -1,13 +1,3 @@
-#panel {
-    position: absolute;
-    top: 5px;
-    left: 50%;
-    margin-left: -180px;
-    z-index: 5;
-    background-color: #FFF;
-    padding: 5px;
-    border: 1px solid #999;
-}
 var map, pointArray, heatmap;
 var heatmapData = [
   <% @coordinates.each do |venue| %>
@@ -16,6 +6,12 @@ var heatmapData = [
   ];
 
 function initialize() {
+  $('span#hide-pins-btn').addClass('hidden');
+  $('span#show-pins-btn').removeClass('hidden');
+  $('span#show-pins-btn').on("click", "button", changeShowClass)
+  $('span#hide-pins-btn').on("click", "button", changeHideClass)
+  var cuisine = "<%= @search.cuisine%>";
+  restaurantCount(cuisine);
   var mapOptions = {
     zoom: 11,
     center: new google.maps.LatLng(40.7, -73.9),
@@ -31,23 +27,38 @@ function initialize() {
     data: pointArray
     
   });
-
+  
   heatmap.setMap(map);
+  allMarkers = []
+  <% @restaurants.each do |restaurant| %>
 
-  var pinLocation = new google.maps.LatLng(40.7, -73.9)
-  marker = new google.maps.Marker({
-    position: pinLocation,
-    title:"Hello World!",
-    animation: google.maps.Animation.DROP
-  });
-  
-  
+    marker = new google.maps.Marker({
+    position: new google.maps.LatLng(<%=restaurant.latitude%>, <%= restaurant.longitude -%>),
+    title: "<%= restaurant.name %>",
+    id: "<%= restaurant.foursquare_id %>"
+    });
+    var contentString = '<h5><%= restaurant.name %></h5>'+'<a href="<%= restaurant.foursquare_url %>" target="_blank">Foursquare Page</a><br>'
+    // +'<div class="rating">Rating: </div>'
+    <% if restaurant.phone_number %>
+    +'<p><%= restaurant.phone_number[0..2] %>.<%= restaurant.phone_number[3..5]%>.<%= restaurant.phone_number[6..-1] %></p>'
+    <% end %>
+    <% restaurant.cuisines.each do |cuisine| %>
+                +'<li><%= cuisine.name %></li><br>'
+                <% end %>;
+
+    var infoWindow = new google.maps.InfoWindow();
+    bindInfoWindow(marker, contentString, infoWindow);
+    allMarkers.push(marker)
+  <% end %>
+}
+
+function restaurantCount(cuisine){
+  var count = "<%= @coordinates.count %>";
+  $("span.count").text(cuisine + ": " + count);
 }
 
 function toggleHeatmap() {
-  
   heatmap.setMap(heatmap.getMap() ? null : map);
-
 }
 
 function changeGradient() {
@@ -82,4 +93,43 @@ function dropPin(){
   marker.setMap(map);
 }
 
+function changeShowClass(){
+  dropPins();
+  $('span#show-pins-btn').addClass("hidden")
+  $('span#hide-pins-btn').removeClass('hidden')
+} 
+
+function changeHideClass(){
+  hidePins();
+  $('span#hide-pins-btn').addClass('hidden')
+  $('span#show-pins-btn').removeClass('hidden')
+} 
+
+function bindInfoWindow(marker, contentString, infowindow){
+  previousWindow = null;
+  google.maps.event.addListener(marker, 'click', function(){
+    if (previousWindow !== null){
+      previousWindow.close();
+    }
+    infowindow.setContent(contentString);
+    infowindow.open(map, marker);
+    previousWindow = infowindow;
+  });
+}
+
+function dropPins(){
+  allMarkers.forEach(function(venue){
+    venue.setMap(map);
+  })
+}
+
+function hidePins(){
+   allMarkers.forEach(function(venue){
+    venue.setMap(null);
+  })
+}
+
 initialize();
+
+
+// $('.gm-style-iw').children('div').children('div').children('div').append("8.4")

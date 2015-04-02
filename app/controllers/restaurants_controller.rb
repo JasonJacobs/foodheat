@@ -6,7 +6,8 @@ class RestaurantsController < ApplicationController
 
   def search
     @search = Search.new(params[:cuisine])
-    @coordinates = @search.get_coordinates(@search.search_for_cuisine)
+    @restaurants = @search.search_for_cuisine
+    @coordinates = @search.get_coordinates(@restaurants)
     respond_to do |f|
       f.js
     end

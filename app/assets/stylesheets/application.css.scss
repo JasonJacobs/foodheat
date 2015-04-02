@@ -66,6 +66,7 @@ html, body, #map-canvas {
   height: 90%; margin: 0; padding: 0;
 }
 
+
 h1 {
   font-family: 'Tangerine', serif;
   font-size: 64px;
@@ -82,4 +83,13 @@ h1 {
     background-color: #FFF;
     padding: 5px;
     border: 1px solid #999;
+}
+
+.hidden {
+  display: false;
+}
+
+td.count {
+  font-size: 20px;
+  text-align: right;
 }
