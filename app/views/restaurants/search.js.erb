@@ -1,4 +1,13 @@
-
+#panel {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    margin-left: -180px;
+    z-index: 5;
+    background-color: #FFF;
+    padding: 5px;
+    border: 1px solid #999;
+}
 var map, pointArray, heatmap;
 var heatmapData = [
   <% @coordinates.each do |venue| %>
