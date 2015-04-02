@@ -6,6 +6,7 @@ var heatmapData = [
   ];
 
 function initialize() {
+  $('span#hide-pins-btn').addClass('hidden');
   $('span#show-pins-btn').removeClass('hidden');
   $('span#show-pins-btn').on("click", "button", changeShowClass)
   $('span#hide-pins-btn').on("click", "button", changeHideClass)
@@ -30,12 +31,22 @@ function initialize() {
   heatmap.setMap(map);
   allMarkers = []
   <% @restaurants.each do |restaurant| %>
-  marker = new google.maps.Marker({
+
+    marker = new google.maps.Marker({
     position: new google.maps.LatLng(<%=restaurant.latitude%>, <%= restaurant.longitude -%>),
-    title: "<%= restaurant.name %>",
-    animation: google.maps.Animation.DROP
-  });
-  allMarkers.push(marker)
+    title: "<%= restaurant.name %>"
+    });
+    var contentString = '<h5><%= restaurant.name %></h5>'+'<a href="<%= restaurant.foursquare_url %>" target="_blank">Foursquare Page</a><br>'
+    <% if restaurant.phone_number %>
+    +'<p><%= restaurant.phone_number[0..2] %>.<%= restaurant.phone_number[3..5]%>.<%= restaurant.phone_number[6..-1] %></p>'
+    <% end %>
+    <% restaurant.cuisines.each do |cuisine| %>
+                +'<li><%= cuisine.name %></li><br>'
+                <% end %>;
+
+    var infoWindow = new google.maps.InfoWindow();
+    bindInfoWindow(marker, contentString, infoWindow);
+    allMarkers.push(marker)
   <% end %>
 }
 
@@ -45,9 +56,7 @@ function restaurantCount(cuisine){
 }
 
 function toggleHeatmap() {
-  
   heatmap.setMap(heatmap.getMap() ? null : map);
-
 }
 
 function changeGradient() {
@@ -94,20 +103,28 @@ function changeHideClass(){
   $('span#show-pins-btn').removeClass('hidden')
 } 
 
+function bindInfoWindow(marker, contentString, infowindow){
+  previousWindow = null;
+  google.maps.event.addListener(marker, 'click', function(){
+    if (previousWindow !== null){
+      previousWindow.close();
+    }
+    infowindow.setContent(contentString);
+    infowindow.open(map, marker);
+    previousWindow = infowindow;
+  });
+}
+
 function dropPins(){
-  
   allMarkers.forEach(function(venue){
     venue.setMap(map);
   })
-  
-  // alert("drop hits")
 }
 
 function hidePins(){
    allMarkers.forEach(function(venue){
     venue.setMap(null);
   })
-
 }
 
 initialize();
