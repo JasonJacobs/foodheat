@@ -1,39 +1,17 @@
 # Foodheat
 
-## Description
+## Description & Background
 
-Add a short description of your app.
-
-## Screenshots
-
-Add some spiffy screenshots of your app here.
-
-## Background
-
-Why did you want to make this app? What was your development process
-like?
-
-## Features
-
-Bullet point some of the key features of your app here.
+We believe there is so much we can learn about people by looking at the kinds of foods that surround them.  As New Yorkers, we understand that much of our cultural richness is thanks to the various cultural backgrounds of its people.
+We decided to build this application in an effort to provide a better, more visual representation of where communities are typically concentrated.
 
 ## Usage
 
-How do users use your app?
+It's simple!  Just click on a cuisine you would like to explore, and the heatmap will be rendered!
 
-## Development/Contribution
+## Authors
 
-Explain how people can contribute to your app. How should they write tests?
-Any things in particular you'd like to see in pull requests?
-
-## Future
-
-What features are you currently working on? Only mention things that you
-actually are implementing. No pie-in-the-sky-never-gonna-happen stuff.
-
-## Author
-
-Link to your blog, twitter, etc!
+<a href="https://github.com/pbfreak422">Jason Jacobs</a>,  <a href="https://github.com/jeremysklarsky">Jeremy Sklarsky</a>, <a href="https://github.com/jmsardina">Jennifer Sardina</a>
 
 ## License
 
