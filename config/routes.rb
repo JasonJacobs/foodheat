@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  get 'facts/create'
+
   # resources :cuisines
 
   root 'restaurants#index'
   post 'restaurants' => 'restaurants#search', as: :search
   resources :restaurants, except: :create
-  
+  resources 'facts', only: [:create]
 
   # resources :neighborhoods
 
