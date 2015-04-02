@@ -61,6 +61,10 @@ class Search
       categories = ["Latin American", "Peruvian", "Cuban", "Dominican", "Mexican"]
     when "Bodega"
       categories = ["Deli / Bodega"]
+    when "African"
+      categories = ["African"]
+    when "Filipino"
+      categories = ["Filipino"]
     end
 
     @results = []
