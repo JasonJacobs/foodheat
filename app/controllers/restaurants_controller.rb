@@ -3,6 +3,7 @@ class RestaurantsController < ApplicationController
   def index
     # @cuisines = ["Japanese", "Chinese", "Mexican", "Coffee", "BBQ", "Pizza", "Caribbean", "Italian", "Thai", "Indian", "French", "American", "Southern", "Food Truck", "Greek", "Middle Eastern", "Kosher", "Russian", "Vegetarian", "Polish", "Korean", "Latin American", "Bodega"].sort_by{|cuisine|cuisine.downcase}
     @cuisines = ["Japanese", "Chinese", "Mexican", "Coffee", "BBQ", "Pizza", "Caribbean", "Italian", "Thai", "Indian", "French", "American", "Southern", "Food Truck", "Greek", "Middle Eastern", "Kosher", "Russian", "Vegetarian", "Polish", "Korean", "Latin American", "Bodega", "African", "Filipino"].sort_by{|cuisine|cuisine.downcase}
+
   end
 
   def search
