@@ -28,64 +28,8 @@
 </head>
 <body>
 
- <!--  <%#= yield %> -->
+  <%= yield %>
 
- <div class="container">
-   <h1>HotPockets</h1>
-      
-    
-  <div class="cuisine-buttons">
-    <ul class="button-row">
-    <% @cuisines.each do |cuisine| %>
-      <li class="cuisine-li"><%= button_to cuisine, search_path, params: {:cuisine => cuisine}, :remote => true, :class => "btn btn-primary"%></li>
-      <% end %>
-    </ul>
-  </div>
-
-<!--   <table>
-    <tr>
-      <td class="count"><span class="count"></span></td>
-    </tr>
-  </table> -->
-
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Loading...</h4>
-      </div>
-      <div id="fact" class="modal-body">
-        Did You Know?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-xs" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-  <span id="map-wrapper">
-    <!-- <div> -->
-      <div class="row">
-          <span class="hidden" id="show-btn"><button class="btn btn-info no-newline" onclick="toggleHeatmap()">Toggle Heatmap</button></span>
-          <span class="hidden" id="show-btn"><button class="btn btn-info no-newline" onclick="changeGradient()">Change Gradient</button></span>
-          <span class="hidden" id="show-btn"><button class="btn btn-info no-newline" onclick="changeRadius()">Change Radius</button></span>
-          <span class="hidden" id="show-btn"><button class="btn btn-info no-newline" onclick="changeOpacity()">Change Opacity</button></span>
-          <span class="hidden" id="hide-btn"><button class="btn btn-info no-newline" onclick="toggleHeatmap()">Toggle Heatmap</button></span>
-          <span class="hidden" id="hide-btn"><button class="btn btn-info no-newline" onclick="changeGradient()">Change Gradient</button></span>
-          <span class="hidden" id="hide-btn"><button class="btn btn-info no-newline" onclick="changeRadius()">Change Radius</button></span>
-          <span class="hidden" id="hide-btn"><button class="btn btn-info no-newline" onclick="changeOpacity()">Change Opacity</button></span>
-          <span class="hidden" id="show-pins-btn"><button class="btn btn-info">Show Restaurants</button></span>
-          <span class="hidden" id="hide-pins-btn"><button class="btn btn-info">Hide Restaurants</button></span>
-      </div>
-    <!-- <div> -->
-    <div id="map-canvas"></div>
-  </span>
+ 
 </body>
 </html>
