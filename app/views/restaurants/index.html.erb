@@ -4,15 +4,15 @@
           <td><h1>Hot Pockets</h1></td>
           <td class="count"><span class="count"></span></td>
         </tr>
-      </table>
-      
-    
+      </table>  
   <div class="cuisine-buttons">
     <ul class="row">
     <% @cuisines.each do |cuisine| %>
-      <li><%= button_to cuisine, search_path, params: {:cuisine => cuisine}, :remote => true, :class => "btn btn-primary"%></li>
+
+      <li class="cuisine-li"><%= button_to cuisine, search_path, params: {:cuisine => cuisine}, :remote => true, :class => "btn btn-default btn-xs"%></li>
       <% end %>
     </ul>
+    
     <ul class="row">
         <button class="btn btn-info" onclick="toggleHeatmap()">Toggle Heatmap</button>
         <button class="btn btn-info" onclick="changeGradient()">Change gradient</button>
@@ -24,6 +24,7 @@
     </ul>
   </div>
 </div>
+
 <body>
   <div id="panel"
     <ul class="row">
@@ -39,4 +40,7 @@
 
 
 
-  <div id="map-canvas"></div>
+
+
+<div id="map-canvas"></div>
+

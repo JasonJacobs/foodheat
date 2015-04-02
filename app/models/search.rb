@@ -15,18 +15,18 @@ class Search
       categories = ["Chinese", "Cantonese", "Dumplings", "Shanghai", "Szechuan"] 
     when "Mexican"
       categories = ["Mexican", "Tacos", "Taqueria"]
-    when "Coffee Shops"
+    when "Coffee"
       categories = ["Coffee", "Café"]
-    when "Bakery"
-      categories = ["Bakery", "Bagels"]
+    # when "Bakery"
+    #   categories = ["Bakery", "Bagels"]
     when "BBQ"
       categories = ["BBQ"]
-    when "Fried Chicken"
-      categories = ["Fried Chicken", "Wings"]
+    # when "Fried Chicken"
+    #   categories = ["Fried Chicken", "Wings"]
     when "Pizza"
       categories = ["Pizza"]
     when "Caribbean"
-      categories = ["Caribbean", "Jamaican", "Dominican"]
+      categories = ["Caribbean", "Jamaican"]
     when "Italian"
       categories = ["Italian"]
     when "Thai"
@@ -35,7 +35,7 @@ class Search
       categories = ["Indian"]
     when "French"
       categories = ["French"]
-    when "American / New American"
+    when "American"
       categories = ["Diner", "American", "New American"]
     when "Southern"
       categories = ["Southern", "Soul Food", "Southern / Soul"]
@@ -45,8 +45,8 @@ class Search
       categories = ["Greek"]
     when "Middle Eastern"
       categories = ["Turkish", "Lebanese", "Falafel", "Egyptian"]
-    when "Fast Food"
-      categories = ["Fast Food", "Fried Chicken"]
+    # when "Fast Food"
+    #   categories = ["Fast Food", "Fried Chicken"]
     when "Kosher"
       categories = ["Kosher", "Kosher1", "Jewish"]
     when "Russian"
@@ -58,9 +58,13 @@ class Search
     when "Korean"
       categories = ["Korean"]
     when "Latin American"
-      categories = ["Latin American", "Peruvian", "Cuban"]
+      categories = ["Latin American", "Peruvian", "Cuban", "Dominican", "Mexican"]
     when "Bodega"
       categories = ["Deli / Bodega"]
+    when "African"
+      categories = ["African"]
+    when "Filipino"
+      categories = ["Filipino"]
     end
 
     @results = []
