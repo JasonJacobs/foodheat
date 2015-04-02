@@ -34,9 +34,11 @@ function initialize() {
 
     marker = new google.maps.Marker({
     position: new google.maps.LatLng(<%=restaurant.latitude%>, <%= restaurant.longitude -%>),
-    title: "<%= restaurant.name %>"
+    title: "<%= restaurant.name %>",
+    id: "<%= restaurant.foursquare_id %>"
     });
     var contentString = '<h5><%= restaurant.name %></h5>'+'<a href="<%= restaurant.foursquare_url %>" target="_blank">Foursquare Page</a><br>'
+    // +'<div class="rating">Rating: </div>'
     <% if restaurant.phone_number %>
     +'<p><%= restaurant.phone_number[0..2] %>.<%= restaurant.phone_number[3..5]%>.<%= restaurant.phone_number[6..-1] %></p>'
     <% end %>
@@ -128,3 +130,6 @@ function hidePins(){
 }
 
 initialize();
+
+
+// $('.gm-style-iw').children('div').children('div').children('div').append("8.4")
