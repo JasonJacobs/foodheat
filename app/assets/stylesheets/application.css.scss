@@ -43,7 +43,7 @@ ul {
 li {
   display: inline-block;
   padding-left: 5px;
-  padding-top: 5px;
+  margin-top: 5px;
 }
 
 html, body, #map-canvas {
@@ -67,4 +67,9 @@ html, body, #map-canvas {
 
 .hidden {
   display: false;
+}
+
+td.count {
+  font-size: 20px;
+  text-align: right;
 }
