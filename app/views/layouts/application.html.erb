@@ -1,34 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,500' rel='stylesheet' type='text/css'>
   <title>Foodheat</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
+
+
+
+
+
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+
+
+  <script type="text/javascript">
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["map_key"] %>"
+  </script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
+
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true_or_false">
+  </script>
 </head>
-
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-
-
-    <script type="text/javascript">
-      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["map_key"] %>"
-    </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
-
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true_or_false">
-    </script>
-
-
 <body>
-  <!-- <div class="container" style="margin-top: -50px"> -->
-    <%= yield %>
-  <!-- </div> -->
-  
-  
+ <!--  <%#= yield %> -->
 
+ <div class="container">
+   <h1>Hot Pockets</h1>
+      
+    
+  <div class="cuisine-buttons">
+    <ul class="button-row">
+    <% @cuisines.each do |cuisine| %>
+      <li><%= button_to cuisine, search_path, params: {:cuisine => cuisine}, :remote => true, :class => "btn btn-primary"%></li>
+      <% end %>
+    </ul>
+  </div>
+
+<!--   <table>
+    <tr>
+      <td class="count"><span class="count"></span></td>
+    </tr>
+  </table> -->
+
+</div>
+
+
+
+
+
+
+  <span id="map-wrapper">
+    <!-- <div> -->
+      <div class="row">
+          <span class="hidden" id="show-btn"><button class="btn btn-info no-newline" onclick="toggleHeatmap()">Toggle Heatmap</button></span>
+          <span class="hidden" id="show-btn"><button class="btn btn-info no-newline" onclick="changeGradient()">Change Gradient</button></span>
+          <span class="hidden" id="show-btn"><button class="btn btn-info no-newline" onclick="changeRadius()">Change Radius</button></span>
+          <span class="hidden" id="show-btn"><button class="btn btn-info no-newline" onclick="changeOpacity()">Change Opacity</button></span>
+          <span class="hidden" id="hide-btn"><button class="btn btn-info no-newline" onclick="toggleHeatmap()">Toggle Heatmap</button></span>
+          <span class="hidden" id="hide-btn"><button class="btn btn-info no-newline" onclick="changeGradient()">Change Gradient</button></span>
+          <span class="hidden" id="hide-btn"><button class="btn btn-info no-newline" onclick="changeRadius()">Change Radius</button></span>
+          <span class="hidden" id="hide-btn"><button class="btn btn-info no-newline" onclick="changeOpacity()">Change Opacity</button></span>
+          <span class="hidden" id="show-pins-btn"><button class="btn btn-info">Show Restaurants</button></span>
+          <span class="hidden" id="hide-pins-btn"><button class="btn btn-info">Hide Restaurants</button></span>
+      </div>
+    <!-- <div> -->
+    <div id="map-canvas"></div>
+  </span>
 </body>
 </html>

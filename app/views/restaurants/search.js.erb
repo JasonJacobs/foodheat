@@ -5,11 +5,16 @@ var heatmapData = [
   <% end %>
   ];
 
+
+
+
+
 function initialize() {
   $('span#hide-pins-btn').addClass('hidden');
   $('span#show-pins-btn').removeClass('hidden');
   $('span#show-pins-btn').on("click", "button", changeShowClass)
   $('span#hide-pins-btn').on("click", "button", changeHideClass)
+  $('span#show-btn').removeClass('hidden');
   var cuisine = "<%= @search.cuisine%>";
   restaurantCount(cuisine);
   var mapOptions = {
@@ -27,6 +32,8 @@ function initialize() {
     data: pointArray
     
   });
+
+
   
   heatmap.setMap(map);
   allMarkers = []
@@ -104,6 +111,7 @@ function changeHideClass(){
   $('span#hide-pins-btn').addClass('hidden')
   $('span#show-pins-btn').removeClass('hidden')
 } 
+
 
 function bindInfoWindow(marker, contentString, infowindow){
   previousWindow = null;
