@@ -1,4 +1,5 @@
 $(function(){
+  addAboutModalListener();
   addModalListener();
   initializeMap();
 });
@@ -15,6 +16,14 @@ function initializeMap() {
 
 function addModalListener(){
   $('li.cuisine-li').children('form').on("submit", getCuisineFacts);
+}
+
+function addAboutModalListener(){
+  $('button#about').on("click", showAbout);
+}
+
+function showAbout(){
+  $('#aboutModal').modal('show');
 }
 
 function getCuisineFacts(){

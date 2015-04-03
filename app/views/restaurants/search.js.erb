@@ -5,10 +5,6 @@ var heatmapData = [
   <% end %>
   ];
 
-
-
-
-
 function initialize() {
   $('#myModal').on("blur", function(){
     $('.modal-title').text("Loading...")
@@ -36,8 +32,6 @@ function initialize() {
     
   });
 
-
-  
   heatmap.setMap(map);
   allMarkers = []
   <% @restaurants.each do |restaurant| %>
@@ -66,7 +60,7 @@ function initialize() {
 
 function restaurantCount(cuisine){
   var count = "<%= @coordinates.count %>";
-  $(".count").text(cuisine + " Restaurants: " + count);
+  $(".count").html("<em>Category:</em> "+ cuisine + "<em> Business Count: </em>" + count);
 }
 
 function toggleHeatmap() {
