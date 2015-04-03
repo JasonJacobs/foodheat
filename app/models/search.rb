@@ -62,7 +62,7 @@ class Search
     when "Bodega"
       categories = ["Deli / Bodega"]
     when "African"
-      categories = ["African"]
+      categories = ["African", "Ethiopian"]
     when "Filipino"
       categories = ["Filipino"]
     end
