@@ -54,7 +54,7 @@ html, body {
   /*display: inline-block;*/
 }
 
-.row {
+.map-button-row {
   position: absolute;
   z-index: 5;
   text-align: center;
@@ -98,8 +98,16 @@ h1 {
   display: false;
 }
 
-.count {
-  font-size: 20px;
-  width: 100%;
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.col-xs-4 {
   text-align: center;
 }
